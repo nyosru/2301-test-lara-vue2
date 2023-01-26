@@ -54,7 +54,7 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="page1">страничка только для авторизованных</a>
+                                <a class="nav-link" href="page1">админ панель (только для авторизованных)</a>
                             </li>
                             <li class="nav-item xdropdown">
                                 <a id="xnavbarDropdown" class="nav-link xdropdown-toggle" href="#" role="button"
@@ -75,8 +75,6 @@
                                         @csrf
                                         <button type="submit" class="btn btn-link" >Выход</button>
                                     </form>
-                                    
-                                {{-- </div> --}}
 
                             </li>
                         @endguest

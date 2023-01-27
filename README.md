@@ -71,6 +71,8 @@ php artisan make:seeder RecordTagSeeder
 старт / записи / теги
 
 9 + подготовка api получения тегов
+php artisan make:resource TagsResource
+php artisan make:resource TagsCollection
 
 10 + подготовка vue компонента для работы с тегами
 концепция следующая, вся инфа и функции в /use/tags.js 

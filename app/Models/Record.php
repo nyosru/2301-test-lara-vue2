@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Record extends Model
 {
     use HasFactory;
+
+    /**
+     * tags, принадлежащие records.
+     */
+    public function tags()
+    {
+        return $this->belongsToMany( Tag::class);
+    }
 }

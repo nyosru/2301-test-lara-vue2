@@ -15,10 +15,9 @@ class CreateRecordsTable extends Migration
     {
         Schema::create('records', function (Blueprint $table) {
             $table->id();
-
             // id - number
             // file - string (путь к файлу)
-            $table->string('file', 250);
+            $table->string('file', 250)->nullable();
             // title - string - max length 150 - valid
             $table->string('title', 150);
             // slug - string (автоматический транслит title)
@@ -26,7 +25,7 @@ class CreateRecordsTable extends Migration
             // description - text - max length 3000
             $table->text('description');
             // tags - array сущности Tag
-            $table->integer('tags');
+            // $table->integer('tags');
             // view_all - boolean
             $table->boolean('view_all');
 

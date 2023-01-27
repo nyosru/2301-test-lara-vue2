@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Record;
 use Illuminate\Database\Seeder;
 
 class RecordSeeder extends Seeder
@@ -13,6 +14,9 @@ class RecordSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Record::factory()
+            ->count(50)       
+            ->hasTags(5)
+            ->create();
     }
 }

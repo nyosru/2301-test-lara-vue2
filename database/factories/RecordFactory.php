@@ -13,8 +13,12 @@ class RecordFactory extends Factory
      */
     public function definition()
     {
+        $tag = $this->faker->name();
         return [
-            //
+            'title' => $tag,
+            'slug' => str_slug($tag),
+            'description' => $this->faker->text(),
+            'view_all' => ( 1 === rand(1,3) )
         ];
     }
 }

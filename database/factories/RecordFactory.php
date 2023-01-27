@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class TagFactory extends Factory
+class RecordFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -13,10 +13,8 @@ class TagFactory extends Factory
      */
     public function definition()
     {
-        $tag = $this->faker->company();
         return [
-            'title' => $tag,
-            'slug' => str_slug($tag),
+            //
         ];
     }
 }

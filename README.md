@@ -52,6 +52,11 @@ php artisan make:model Tag -mfs
 + для транслита буду использовать помощника 
 php composer.phar require laravel/helpers
 
++ создать модель / миграцию / фабрику / сидер для Записей
+php artisan make:model Record -mfs
+
+для связки многих тегов (несколько) с одной записью, в ларавель нужны отношения ( связывающая моделька и доп таблица в бд ) 
+
 + миграции и наполнение фейками
 php artisan migrate:refresh --seed 
 

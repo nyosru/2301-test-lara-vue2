@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Resources\TagsCollection;
+use App\Http\Resources\TagsResource;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +17,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::get('/tags/{id}', function ($id) {
+    return new TagsResource(Tag::findOrFail($id));
+});
+Route::get('/tags', function () {
+    return new TagsCollection(Tag::paginate(5));
 });

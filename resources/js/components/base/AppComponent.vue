@@ -10,7 +10,8 @@
             :class="[{ 'btn-success': currentTab === tab.component }]"
             @click="currentTab = tab.component"
           >
-            {{ tab.name }} {{ tab.component }}
+            {{ tab.name }} 
+            <!-- {{ tab.component }} -->
           </button>
 
           <!-- <component :is="currentTab" class="tab"></component> -->

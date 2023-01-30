@@ -6,18 +6,40 @@
           <div class="card-header">Теги</div>
 
           <div class="card-body">
-            <div v-if="resLoading">... загружаю с апи .. пару сек</div>
+            <div v-if="resLoading">
+              ... загружаю с апи .. пару сек
+              <br />
+              ..
+              <br />
+              ..
+              <br />
+              ..
+              <br />
+              ..
+              <br />
+              <nav aria-label="..." v-if="listMeta.links">
+                <ul class="pagination">
+                  <li>..</li>
+                </ul>
+              </nav>
+            </div>
             <div v-else>
-              <div v-for="el in list" :key="el" >{{ el.title }} / {{ el.slug }}</div>
+              <div v-for="el in list" :key="el">
+                {{ el.title }} / {{ el.slug }}
+              </div>
               <tags-pages />
             </div>
 
-            <button @click="showTeh = !showTeh" >тех инфа (скрыть/показать)</button>
-            <div v-if="showTeh" >
-            list: {{ list }}            <br />
-            listMeta: {{ listMeta }}            <br />
-            resError: {{ resError }}
-        </div>
+            <button @click="showTeh = !showTeh">
+              тех инфа (скрыть/показать)
+            </button>
+            <div v-if="showTeh">
+              list: {{ list }}
+              <br />
+              listMeta: {{ listMeta }}
+              <br />
+              resError: {{ resError }}
+            </div>
           </div>
         </div>
       </div>
@@ -42,5 +64,4 @@ const {
 } = tags()
 
 const showTeh = ref(false)
-
 </script>

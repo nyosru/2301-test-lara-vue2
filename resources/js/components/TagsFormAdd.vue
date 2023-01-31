@@ -1,6 +1,6 @@
 <template>
   <div class="mb-2">
-    addResult: {{ addResult }}
+    <!-- addResult: {{ addResult }}
     <br />
     addLoading: {{ addLoading }}
     <br />
@@ -9,17 +9,28 @@
 
     <br />
     addErrorStr: {{ addErrorStr }}
-    <br />
+    <br /> -->
+
+    <div v-if="addResult" class="alert alert-success">
+      Запись добавлена
+    </div>
 
     <div
       v-for="(item, index) in addError"
       :key="item"
       class="alert alert-danger mb-1"
     >
-      <b>{{ index }}</b>
-      <br />
-      <div v-for="i in item">
-        {{ i }}
+      <div class="container">
+        <div class="row">
+          <div class="col-3 text-end">
+            <b>{{ index }}</b>
+          </div>
+          <div class="col-9">
+            <div v-for="i in item" :key="i">
+              {{ i }}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -38,7 +49,8 @@
         <br />
         <input type="text" name="tag" v-model.trim="formTagTitle" required />
         <br />
-        <button class="btn btn-success" type="submit">Добавить</button>
+        <div v-if="addLoading" >Загружаю ...</div>
+        <button v-else class="btn btn-success" type="submit">Добавить</button>
       </form>
     </transition>
   </div>

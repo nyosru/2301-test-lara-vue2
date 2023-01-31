@@ -11,7 +11,7 @@ const resLoading = ref(true)
 const addResult = ref(false)
 const addError = ref({})
 const addErrorStr = ref('')
-const addLoading = ref(true)
+const addLoading = ref(false)
 
 const formTagTitle = ref('')
 
@@ -33,6 +33,8 @@ const addData = async(item) => {
         // обработка запроса норм, смотрим что получили в ответ
         .then(function(response) {
             addResult.value = true
+            loadData(nowPage.value)
+            formTagTitle.value = ''
                 // nowPage.value = page
                 // list.value = response.data.data
                 // listMeta.value = response.data.meta

@@ -18,7 +18,7 @@
       <!-- {{ el.tags }} -->
       <div v-for="t in el.tags" :key="t.id" class="tegInfo mb-1">
         <abbr :title="t.slug">{{ t.title }}</abbr>
-        <sup><a href="#" @click="deleteRecordTag(t.id)">удалить тег</a></sup>
+        <sup><a href="#" @click="deleteRecordTag(el.id,t.id)">удалить тег</a></sup>
       </div>
     </div>
   </div>

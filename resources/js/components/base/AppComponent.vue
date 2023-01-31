@@ -10,7 +10,7 @@
             :class="[{ 'btn-success': currentTab === tab.component }]"
             @click="currentTab = tab.component"
           >
-            {{ tab.name }} 
+            {{ tab.name }}
             <!-- {{ tab.component }} -->
           </button>
 
@@ -48,6 +48,7 @@ const tabs = [
 </script>
 
 <style scope>
+
 /* we will explain what these classes do next! */
 .v-enter-active,
 .v-leave-active {
@@ -58,4 +59,5 @@ const tabs = [
 .v-leave-to {
   opacity: 0;
 }
+
 </style>

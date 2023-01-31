@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\RecordController;
+use App\Http\Controllers\RecordTagsController;
 use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
@@ -11,5 +12,6 @@ Route::middleware(['api'])->group(function () {
     // работа с record
     Route::apiResource('records', RecordController::class);
     // работа с record+tags
-    Route::apiResource('recordTags', RecordController::class);
+    Route::delete('recordTags/{recordId}/{tagId}', [ RecordTagsController::class , 'destroy' ] );    
+    Route::apiResource('recordTags', RecordTagsController::class);
 });

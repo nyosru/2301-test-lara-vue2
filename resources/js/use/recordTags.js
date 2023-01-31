@@ -112,57 +112,41 @@
 
 const uriForApi = '/api/recordTags'
 
-const deleteRecordTag = async(id) => {
+const deleteRecordTag = async(record_id, tag_id) => {
 
     axios
-        .post(uriForApi, { title: formTagTitle.value })
+        .delete(uriForApi + '/' + record_id + '/' + tag_id)
         // обработка запроса норм, смотрим что получили в ответ
         .then(function(response) {
-            addResult.value = true
+            // addResult.value = true
             loadData(nowPage.value)
-            formTagTitle.value = ''
+                // formTagTitle.value = ''
                 // nowPage.value = page
                 // list.value = response.data.data
                 // listMeta.value = response.data.meta
         })
-        // обработка запроса прошла неудачно
-        .catch((error) => {
-            // ошибка валиадции
-            if (error.response.status === 422) {
-                addError.value = error.response.data.errors
-            }
-            // каккая то другая ошибка
-            else {
-                // упс ... а вот и ошибка
-                addError.value = error
-                addErrorStr.value =
-                    'упс ... произошла неописуемая ситуация, повторитее попытку через пару минут'
-            }
-        })
-        .finally((re) => {
-            // загрузка закончена
-            addLoading.value = false
-        })
+        // // обработка запроса прошла неудачно
+        // .catch((error) => {
+        //     // ошибка валиадции
+        //     if (error.response.status === 422) {
+        //         addError.value = error.response.data.errors
+        //     }
+        //     // каккая то другая ошибка
+        //     else {
+        //         // упс ... а вот и ошибка
+        //         addError.value = error
+        //         addErrorStr.value =
+        //             'упс ... произошла неописуемая ситуация, повторитее попытку через пару минут'
+        //     }
+        // })
+        // .finally((re) => {
+        //     // загрузка закончена
+        //     addLoading.value = false
+        // })
 }
 
-export default function tags() {
+export default function recordTags() {
     return {
-        loadData,
-        list,
-        listMeta,
-        resError,
-        resLoading,
-        nowPage,
-        nowPageLoad,
-
-        // добавление
-        formTagTitle,
-        addData,
-        addResult,
-        addLoading,
-        addError,
-        addErrorStr,
-        // удаление
-        itemDelete,
+        deleteRecordTag
     }
 }

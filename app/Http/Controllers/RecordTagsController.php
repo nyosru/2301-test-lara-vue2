@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RecordTagsController extends Controller
 {
@@ -77,8 +78,10 @@ class RecordTagsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($recordId,$tagId)
     {
-        //
+        // $recordId/$tagId
+        $res = DB::table('record_tag')->where('record_id','=',$recordId)->where('tag_id','=',$tagId)->delete();
+        return response()->json($res);
     }
 }

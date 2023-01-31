@@ -67,5 +67,7 @@ const {
   nowPageLoad,
 } = tags()
 
+const showAddForm = ref(false)
+
 const showTeh = ref(false)
 </script>

@@ -27,13 +27,11 @@
               </nav>
             </div>
             <div v-else>
-              <div v-for="el in list" :key="el">
-                {{ el.title }} / {{ el.slug }}
-              </div>
+              <data-item v-for="el in list" :key="el" :el="el" />
               <tags-pages />
             </div>
 
-            <button @click="showTeh = !showTeh">
+            <button @click="showTeh = !showTeh" class="mt-3">
               тех инфа (скрыть/показать)
             </button>
             <div v-if="showTeh">
@@ -55,6 +53,7 @@ import { ref } from '@vue/reactivity'
 
 import TagsPages from './TagsPages.vue'
 import TagsFormAdd from './TagsFormAdd.vue'
+import DataItem from './TagsItem.vue'
 
 import tags from './../use/tags.js'
 const {

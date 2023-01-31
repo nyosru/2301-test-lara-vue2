@@ -2,6 +2,9 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12">
+        <tags-form-add/>
+      </div>
+      <div class="col-12">
         <div class="card">
           <div class="card-header">Теги</div>
 
@@ -51,6 +54,7 @@
 import { ref } from '@vue/reactivity'
 
 import TagsPages from './TagsPages.vue'
+import TagsFormAdd from './TagsFormAdd.vue'
 
 import tags from './../use/tags.js'
 const {

@@ -1,7 +1,10 @@
 <template>
   <div>
+
     <nav aria-label="..." v-if="listMeta.links">
+      
       <ul class="pagination">
+
         <template v-for="p in listMeta.links">
           <!-- <li>{{ p }}</li> -->
 
@@ -32,7 +35,11 @@
 
 <script setup>
 
+
 import tags from './../use/tags.js'
+
+
+
 const {
   loadData,
   list,

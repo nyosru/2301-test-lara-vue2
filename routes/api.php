@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TagController;
 use App\Http\Resources\TagsCollection;
 use App\Http\Resources\TagsResource;
 use App\Models\Tag;
@@ -21,9 +22,12 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::get('/tags/{id}', function ($id) {
-    return new TagsResource(Tag::findOrFail($id));
-});
-Route::get('/tags', function () {
-    return new TagsCollection(Tag::paginate(5));
-});
+// теги добавить показать удалить
+Route::apiResource( 'tags', TagController::class );
+
+// Route::get('/tags/{id}', function ($id) {
+//     return new TagsResource(Tag::findOrFail($id));
+// });
+// Route::get('/tags', function () {
+//     return new TagsCollection(Tag::paginate(5));
+// });

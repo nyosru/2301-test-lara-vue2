@@ -47,8 +47,9 @@ view_all - boolean
 
 ----- реализация ------
 
-1 + создать модель / миграцию / фабрику / сидер для Тегов
+1 + создать модель / миграцию / фабрику / сидер / контроллер для Тегов
 php artisan make:model Tag -mfs
+php artisan make:controller TagController -r
 
 2 + для транслита буду использовать помощника 
 php composer.phar require laravel/helpers

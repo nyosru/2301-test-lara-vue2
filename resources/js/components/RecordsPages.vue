@@ -34,11 +34,7 @@
 </template>
 
 <script setup>
-
-
-import tags from './../use/tags.js'
-
-
+import records from './../use/records.js'
 
 const {
   loadData,
@@ -48,6 +44,6 @@ const {
   resLoading,
   nowPage,
   nowPageLoad,
-} = tags()
+} = records()
 
 </script>

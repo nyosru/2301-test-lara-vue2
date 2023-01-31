@@ -40,18 +40,14 @@
         v-if="!showAddForm"
         @click="showAddForm = !showAddForm"
       >
-        добавить Запись
+        добавить ТЕГ
       </button>
     </transition>
     <transition>
       <form v-if="showAddForm" @submit.prevent="addData">
         Форма добавления тега
         <br />
-        <input type="text" v-model.trim="formRecordTitle" required />
-        <br />
-        <textarea v-model.trim="formRecordDesc" />
-        <br />
-        <input type="file"  />
+        <input type="text" name="tag" v-model.trim="formTagTitle" required />
         <br />
         <div v-if="addLoading" >Загружаю ...</div>
         <button v-else class="btn btn-success" type="submit">Добавить</button>
@@ -61,7 +57,7 @@
 </template>
 
 <script setup>
-import records from './../use/records.js'
+import tags from './../use/tags.js'
 import { ref } from '@vue/reactivity'
 
 const showAddForm = ref(false)
@@ -80,5 +76,5 @@ const {
   addLoading,
   addError,
   addErrorStr,
-} = records()
+} = tags()
 </script>

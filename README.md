@@ -95,6 +95,11 @@ php artisan make:resource TagsCollection
 12 + теги вью / добавить возможность удалить
 
 
+13 подготовка api для работы с Records
+php artisan make:resource RecordsResource
+php artisan make:resource RecordsCollection
+
+
 vue + axios 
 для генерации постраничного вывода данных в апи .. используем collection ( для разбивки на страницы ) и resources (если нужно в 1 итеме что нить изменить)
 

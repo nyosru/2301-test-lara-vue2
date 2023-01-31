@@ -1,6 +1,8 @@
 import { ref } from '@vue/reactivity'
 import { watchEffect } from '@vue/runtime-core'
 
+const uriForApi = '/api/records'
+
 const list = ref({})
 const listMeta = ref({})
 
@@ -8,28 +10,26 @@ const resError = ref({})
 const resErrorStr = ref('')
 const resLoading = ref(true)
 
+// добавление
 const addResult = ref(false)
 const addError = ref({})
 const addErrorStr = ref('')
 const addLoading = ref(false)
-2
+
 const formTagTitle = ref('')
 
-// на старте 
+// на старте
 const nowPage = ref(1)
 const nowPageLoad = ref(0)
 
 const addData = async(item) => {
-
     addResult.value = false
     addLoading.value = true
     addError.value = {}
     addErrorStr.value = ''
 
     axios
-        .post(
-            '/api/records', { title: formTagTitle.value }
-        )
+        .post(uriForApi, { title: formTagTitle.value })
         // обработка запроса норм, смотрим что получили в ответ
         .then(function(response) {
             addResult.value = true
@@ -59,14 +59,28 @@ const addData = async(item) => {
         })
 }
 
-const loadData = async(page = 1) => {
+// удаление
 
+const itemDelete = async(id) => {
+    axios
+        .delete(uriForApi + id)
+        // обработка запроса норм, смотрим что получили в ответ
+        .then(function(response) {
+            loadData(nowPage.value)
+        })
+        // обработка запроса прошла неудачно
+        .catch((error) => {
+            alert(
+                'упс ... произошла неописуемая ситуация, повторитее попытку через пару минут',
+            )
+        })
+}
+
+const loadData = async(page = 1) => {
     resLoading.value = true
 
     axios
-        .get(
-            '/api/records' + (page > 1 ? '?page=' + page : ''),
-        )
+        .get(uriForApi + (page > 1 ? '?page=' + page : ''))
         // обработка запроса норм, смотрим что получили в ответ
         .then(function(response) {
             nowPage.value = page
@@ -98,8 +112,7 @@ watchEffect(() => {
     loadData(nowPage.value)
 })
 
-
-export default function tags() {
+export default function records() {
     return {
         loadData,
         list,
@@ -109,14 +122,14 @@ export default function tags() {
         nowPage,
         nowPageLoad,
 
-        addData,
-
+        // добавление
         formTagTitle,
-
+        addData,
         addResult,
         addLoading,
         addError,
         addErrorStr,
-
+        // удаление
+        itemDelete,
     }
 }

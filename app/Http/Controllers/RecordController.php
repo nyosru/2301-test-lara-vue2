@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\RecordsCollection;
 use App\Models\Record;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class RecordController extends Controller
      */
     public function index()
     {
-        return new RecordsCollection(Record::paginate(5));
+        return new RecordsCollection(Record::with('tags')->paginate(5));
     }
 
     /**

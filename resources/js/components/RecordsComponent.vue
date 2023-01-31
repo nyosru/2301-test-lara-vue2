@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12">
-        <records-form-add/>
+        <form-add />
       </div>
       <div class="col-12">
         <div class="card">
@@ -27,13 +27,17 @@
               </nav>
             </div>
             <div v-else>
-              <div v-for="el in list" :key="el">
-                {{ el.title }} / {{ el.slug }}
+              <div class="container">
+                <data-item v-for="el in list" :key="el" :el="el" />
+                <div class="row">
+                  <div class="col-12">
+                    <pages />
+                  </div>
+                </div>
               </div>
-              <records-pages />
             </div>
 
-            <button @click="showTeh = !showTeh">
+            <button @click="showTeh = !showTeh" class="mt-3">
               тех инфа (скрыть/показать)
             </button>
             <div v-if="showTeh">
@@ -53,8 +57,9 @@
 <script setup>
 import { ref } from '@vue/reactivity'
 
-import RecordsPages from './RecordsPages.vue'
-import RecordsFormAdd from './RecordsFormAdd.vue'
+import Pages from './RecordsPages.vue'
+import FormAdd from './RecordsFormAdd.vue'
+import DataItem from './RecordsItem.vue'
 
 import records from './../use/records.js'
 const {
@@ -67,5 +72,6 @@ const {
   nowPageLoad,
 } = records()
 
+const showAddForm = ref(false)
 const showTeh = ref(false)
 </script>

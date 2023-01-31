@@ -23090,6 +23090,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var props = __props;
     var itemDeleteLocal = /*#__PURE__*/function () {
       var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(id) {
+        var res;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -23102,6 +23103,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               _context.next = 4;
               return itemDelete(id);
             case 4:
+              res = _context.sent;
+              console.log('res', res);
+            case 6:
             case "end":
               return _context.stop();
           }
@@ -24140,6 +24144,8 @@ try {
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+var token = document.head.querySelector('meta[name="csrf-token"]');
+window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

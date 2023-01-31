@@ -4,8 +4,10 @@ use App\Http\Controllers\RecordController;
 use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
-// теги добавить показать удалить
-Route::apiResource( 'tags', TagController::class );
-
-// record добавить показать удалить
-Route::apiResource( 'records', RecordController::class );
+// эта граппа роутов доступна только авторизованным пользователям
+Route::middleware(['api'])->group(function () {
+    // работа с тегами
+    Route::apiResource('tags', TagController::class);
+    // работа с record
+    Route::apiResource('records', RecordController::class);
+});

@@ -16,8 +16,8 @@ const itemDeleteLocal = async(id) => {
   if( !confirm('удаляем ?') )
   return false
 
-  await itemDelete(id)
-  
+  let res = await itemDelete(id)
+  console.log('res',res);
 }
 
 const {

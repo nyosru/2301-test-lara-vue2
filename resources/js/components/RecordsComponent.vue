@@ -6,7 +6,7 @@
       </div>
       <div class="col-12">
         <div class="card">
-          <div class="card-header">Теги</div>
+          <div class="card-header">Records</div>
 
           <div class="card-body">
             <div v-if="resLoading">

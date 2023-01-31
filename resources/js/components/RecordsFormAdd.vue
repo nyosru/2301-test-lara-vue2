@@ -40,12 +40,12 @@
         v-if="!showAddForm"
         @click="showAddForm = !showAddForm"
       >
-        добавить ТЕГ
+        добавить Record
       </button>
     </transition>
     <transition>
       <form v-if="showAddForm" @submit.prevent="addData">
-        Форма добавления тега
+        Форма добавления record
         <br />
         <input type="text" name="tag" v-model.trim="formTagTitle" required />
         <br />

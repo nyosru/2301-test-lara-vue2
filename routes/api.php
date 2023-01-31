@@ -10,4 +10,6 @@ Route::middleware(['api'])->group(function () {
     Route::apiResource('tags', TagController::class);
     // работа с record
     Route::apiResource('records', RecordController::class);
+    // работа с record+tags
+    Route::apiResource('recordTags', RecordController::class);
 });

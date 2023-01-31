@@ -17,9 +17,8 @@
       <b>Теги:</b>
       <!-- {{ el.tags }} -->
       <div v-for="t in el.tags" :key="t.id" class="tegInfo mb-1">
-      <abbr :title="t.slug" >{{ t.title }}</abbr>
-      <sup><a href="#" >удалить тег</a></sup>
-      
+        <abbr :title="t.slug">{{ t.title }}</abbr>
+        <sup><a href="#" @click="deleteRecordTag(t.id)">удалить тег</a></sup>
       </div>
     </div>
   </div>
@@ -27,6 +26,7 @@
 
 <script setup>
 import tags from './../use/tags.js'
+import recordTags from './../use/recordTags.js'
 
 const props = defineProps({
   el: Object,
@@ -40,6 +40,9 @@ const itemDeleteLocal = async (id) => {
 }
 
 const { itemDelete } = tags()
+
+const { deleteRecordTag } = recordTags()
+
 </script>
 
 <style scoped>
@@ -48,7 +51,7 @@ const { itemDelete } = tags()
   width: 250px;
 }
 
-.tegInfo:HOVER{
-  background-color: rgba(0,0,0,0.15);
+.tegInfo:hover {
+  background-color: rgba(0, 0, 0, 0.15);
 }
 </style>

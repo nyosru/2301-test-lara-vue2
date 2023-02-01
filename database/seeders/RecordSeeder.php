@@ -16,7 +16,7 @@ class RecordSeeder extends Seeder
     {
         Record::factory()
             ->count(50)       
-            ->hasTags(5)
+            ->hasTags(1)
             ->create();
     }
 }

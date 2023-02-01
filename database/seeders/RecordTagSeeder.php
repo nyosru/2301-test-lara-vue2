@@ -15,14 +15,14 @@ class RecordTagSeeder extends Seeder
     public function run()
     {
         $in = [];
-        for( $record = 1; $record<=50;$record++){
-        for( $i = 1; $i<=5;$i++){
-            $in = [
-                'record_id' => $record,
-                'tag_id' => rand(0,50)
-            ];
+        for ($record = 1; $record <= 50; $record++) {
+            for ($i = 1; $i <= 10; $i++) {
+                $in = [
+                    'record_id' => $record,
+                    'tag_id' => rand(0, 50)
+                ];
+                DB::table('record_tag')->insert($in);
+            }
         }
-        }
-        DB::table('record_tag')->insert($in);
     }
 }

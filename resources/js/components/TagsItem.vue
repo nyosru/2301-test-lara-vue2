@@ -1,6 +1,14 @@
 <template>
-  <div>{{ el.title }} / {{ el.slug }}
+  <div>
+    {{ el.title }} 
+    / {{ el.slug }}
+    <abbr title="кол-во использования в records" class="alert alert-danger p-1" >{{ el.records_count }}</abbr>
     <sup><a href="#" @click="itemDeleteLocal(el.id)">Удалить</a></sup>
+    <br/>
+    <br/>
+    {{ el }}
+    <br/>
+    <br/>
   </div>
 </template>
 
@@ -18,6 +26,7 @@ const itemDeleteLocal = async(id) => {
 
   let res = await itemDelete(id)
   console.log('res',res);
+
 }
 
 const {

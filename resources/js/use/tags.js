@@ -105,6 +105,39 @@ const loadData = async(page = 1) => {
         })
 }
 
+const dataAll = ref({})
+const dataAllLoading = ref(false)
+
+const loadDataAll = async() => {
+
+    dataAllLoading.value = true
+
+    axios
+        .get('/api/tags/all')
+        // обработка запроса норм, смотрим что получили в ответ
+        .then(function(response) {
+            dataAll.value = response.data.data
+        })
+        // обработка запроса прошла неудачно
+        .catch((error) => {
+            // // ошибка валиадции
+            // if (error.response.status === 422) {
+            //     resError.value = error.response.data.errors
+            // }
+            // // каккая то другая ошибка
+            // else {
+            //     // упс ... а вот и ошибка
+            //     resError.value = error
+            //     resErrorStr.value =
+            //         'упс ... произошла неописуемая ситуация, повторитее попытку через пару минут'
+            // }
+        })
+        // загрузка закончена
+        .finally((re) => {
+            dataAllLoading.value = false
+        })
+}
+
 // грузим на старте и при изменениях номера страницы
 watchEffect(() => {
     loadData(nowPage.value)
@@ -129,5 +162,10 @@ export default function tags() {
         addErrorStr,
         // удаление
         itemDelete,
+        // полный список
+        loadDataAll,
+        dataAll,
+        dataAllLoading,
+
     }
 }

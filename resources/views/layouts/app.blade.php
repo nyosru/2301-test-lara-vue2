@@ -83,11 +83,14 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4" style="min-height: 70vh;">
             <div id="app">
                 @yield('content')
             </div>
         </main>
+
+        <div class="text-center">создание сайта, Сергей Бакланов > <a href="https://php-cat.com" target="_blank" >php-cat.com</a><br/>
+        Звоните, поговорим <A href="tel:+79222622289">89-222-6-222-89</A></div>
     </div>
 </body>
 

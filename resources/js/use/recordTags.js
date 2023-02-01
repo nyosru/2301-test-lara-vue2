@@ -110,12 +110,61 @@
 //     loadData(nowPage.value)
 // })
 
+
+import records from './records.js'
+
+const { loadData, nowPage } = records()
+
 const uriForApi = '/api/recordTags'
 
 const deleteRecordTag = async(record_id, tag_id) => {
 
-    axios
+    if (!confirm('Удалить привязку Тега к Order ?'))
+        return false
+
+    await axios
         .delete(uriForApi + '/' + record_id + '/' + tag_id)
+        // обработка запроса норм, смотрим что получили в ответ
+        .then(function(response) {
+            // addResult.value = true
+            loadData(nowPage.value)
+                // formTagTitle.value = ''
+                // nowPage.value = page
+                // list.value = response.data.data
+                // listMeta.value = response.data.meta
+        })
+        // // обработка запроса прошла неудачно
+        // .catch((error) => {
+        //     // ошибка валиадции
+        //     if (error.response.status === 422) {
+        //         addError.value = error.response.data.errors
+        //     }
+        //     // каккая то другая ошибка
+        //     else {
+        //         // упс ... а вот и ошибка
+        //         addError.value = error
+        //         addErrorStr.value =
+        //             'упс ... произошла неописуемая ситуация, повторитее попытку через пару минут'
+        //     }
+        // })
+        // .finally((re) => {
+        //     // загрузка закончена
+        //     addLoading.value = false
+        // })
+}
+
+
+/**
+ * добавить tag в record
+ * @param {*} record_id 
+ * @param {*} tag_id 
+ */
+const addRecordTag = async(record_id, tag_id) => {
+
+    console.log(777, record_id, tag_id);
+
+    await axios
+        .post(uriForApi, { record_id: record_id, tag_id: tag_id })
         // обработка запроса норм, смотрим что получили в ответ
         .then(function(response) {
             // addResult.value = true
@@ -147,6 +196,7 @@ const deleteRecordTag = async(record_id, tag_id) => {
 
 export default function recordTags() {
     return {
-        deleteRecordTag
+        deleteRecordTag,
+        addRecordTag
     }
 }

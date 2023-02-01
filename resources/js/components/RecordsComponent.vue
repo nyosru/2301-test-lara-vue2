@@ -28,6 +28,11 @@
             </div>
             <div v-else>
               <div class="container">
+                <div class="row">
+                  <div class="col-12">
+                    <pages />
+                  </div>
+                </div>
                 <data-item v-for="el in list" :key="el" :el="el" />
                 <div class="row">
                   <div class="col-12">

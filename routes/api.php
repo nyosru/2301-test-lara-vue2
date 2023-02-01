@@ -8,10 +8,12 @@ use Illuminate\Support\Facades\Route;
 // эта граппа роутов доступна только авторизованным пользователям
 Route::middleware(['api'])->group(function () {
     // работа с тегами
+    Route::get('tags/all', [TagController::class,'indexAll'] );
     Route::apiResource('tags', TagController::class);
     // работа с record
     Route::apiResource('records', RecordController::class);
     // работа с record+tags
+    // recordTags
     Route::delete('recordTags/{recordId}/{tagId}', [ RecordTagsController::class , 'destroy' ] );    
     Route::apiResource('recordTags', RecordTagsController::class);
 });

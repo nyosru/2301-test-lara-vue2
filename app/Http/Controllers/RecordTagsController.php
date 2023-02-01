@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Record;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -35,7 +36,24 @@ class RecordTagsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validated = $request->validate([
+            'record_id' => 'required|numeric',
+            'tag_id' => 'required|numeric',
+            // 'body' => 'required',
+        ]);
+
+        // dd([ $request->record_id, $request->tag_id ]);
+        $res = [];
+        try {
+            $rec = Record::find($validated['record_id']);
+            $rec->tags()->attach($validated['tag_id']);
+            $res['result'] = true;
+        } catch (\Exception $e) {
+            $res['result'] = false;
+            $res['msg'] = $e->getMessage();
+        }
+        return response()->json($res);
     }
 
     /**
@@ -78,10 +96,17 @@ class RecordTagsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($recordId,$tagId)
+    public function destroy($recordId, $tagId)
     {
-        // $recordId/$tagId
-        $res = DB::table('record_tag')->where('record_id','=',$recordId)->where('tag_id','=',$tagId)->delete();
+        $res = [];
+        try {
+            $rec = Record::find($recordId);
+            $rec->tags()->detach($tagId);
+            $res['result'] = true;
+        } catch (\Exception $e) {
+            $res['result'] = false;
+            $res['msg'] = $e->getMessage();
+        }
         return response()->json($res);
     }
 }

@@ -104,6 +104,10 @@ php artisan make:resource RecordsCollection
 14 + создание ресурсного контроллера для работы со связками тегов с Record
 php artisan make:controller RecordTagsController -r
 
+15 + добавил добавление tag к record 
+16 + добавил удаление tag из record 
+
+
 vue + axios 
 для генерации постраничного вывода данных в апи .. используем collection ( для разбивки на страницы ) и resources (если нужно в 1 итеме что нить изменить)
 

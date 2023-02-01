@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\TagsCollection;
+use App\Http\Resources\TagsResource;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 
@@ -13,9 +14,17 @@ class TagController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        return new TagsCollection(Tag::paginate(5));
+            return new TagsCollection(Tag::paginate(5));
+    }
+
+    /**
+     * получаем все теги
+     */
+    public function indexAll()
+    {
+        return new TagsResource(Tag::select('id','title')->orderBy('title')->get());
     }
 
     /**
@@ -25,8 +34,6 @@ class TagController extends Controller
      */
     public function create(Request $request)
     {
-
-      
     }
 
     /**
@@ -41,7 +48,7 @@ class TagController extends Controller
             'title' => 'required|unique:tags|max:255',
             // 'body' => 'required',
         ]);
-    
+
         // dd($validated);
         $validated['slug'] = str_slug($validated['title']);
 

@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12">
-        <tags-form-add/>
+        <tags-form-add />
       </div>
       <div class="col-12">
         <div class="card">
@@ -27,7 +27,20 @@
               </nav>
             </div>
             <div v-else>
-              <data-item v-for="el in list" :key="el" :el="el" />
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Slug</th>
+                    <th scope="col">count in records</th>
+                    <th scope="col">actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <data-item v-for="el in list" :key="el" :el="el" />
+                </tbody>
+              </table>
               <tags-pages />
             </div>
 

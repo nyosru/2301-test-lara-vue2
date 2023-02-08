@@ -2,9 +2,6 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12">
-        <form-add />
-      </div>
-      <div class="col-12">
         <div class="card">
           <div class="card-header">Records</div>
 
@@ -63,7 +60,6 @@
 import { ref } from '@vue/reactivity'
 
 import Pages from './RecordsPages.vue'
-import FormAdd from './RecordsFormAdd.vue'
 import DataItem from './RecordsItem.vue'
 
 import records from './../use/records.js'

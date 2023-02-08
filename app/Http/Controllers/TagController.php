@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\TagsCollection;
 use App\Http\Resources\TagsResource;
+use App\Models\Record;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 
@@ -92,8 +93,9 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( int $id)
     {
+        // удаляем
         return Tag::findOrFail($id)->delete();
     }
 }
